@@ -4,7 +4,7 @@
 #include <mach/vm_param.h>
 #include <mach/mach_vm.h>
 
-static uintptr_t map_base = 0x7fff00000000UL;
+static uintptr_t map_base = 0x7ff000000000UL;
 static const uintptr_t entropy_mask = 0xffffffUL;
 
 __attribute__((__always_inline__)) static uintptr_t round_page(uintptr_t x)
