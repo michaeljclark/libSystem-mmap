@@ -34,7 +34,7 @@ __vm_allocate(vm_map_t task, vm_address_t *addr, vm_size_t size, int flags)
 	}
 	int rv = vm_allocate(task, addr, size, flags);
 	if (!rv) {
-		map_base = round_page(*addr + size + PAGE_SIZE);
+		map_base = round_page(*addr + size);
 	}
 	return rv;
 }
@@ -48,7 +48,7 @@ __mach_vm_allocate(vm_map_t task, mach_vm_address_t *addr, vm_size_t size, int f
 	}
 	int rv = mach_vm_allocate(task, addr, size, flags);
 	if (!rv) {
-		map_base = round_page(*addr + size + PAGE_SIZE);
+		map_base = round_page(*addr + size);
 	}
 	return rv;
 }
@@ -64,7 +64,7 @@ __vm_map(vm_map_t task, vm_address_t *addr, vm_size_t size, vm_offset_t mask,
 	int rv = vm_map(task, addr, size, mask, flags, object, offset, copy,
 		cur_protection, max_protection, inheritance);
 	if (!rv) {
-		map_base = round_page(*addr + size + PAGE_SIZE);
+		map_base = round_page(*addr + size);
 	}
 	return rv;
 }
@@ -80,7 +80,7 @@ __mach_vm_map(vm_map_t task, mach_vm_address_t *addr, vm_size_t size, mach_vm_of
 	int rv = mach_vm_map(task, addr, size, mask, flags, object, offset, copy,
 		cur_protection, max_protection, inheritance);
 	if (!rv) {
-		map_base = round_page(*addr + size + PAGE_SIZE);
+		map_base = round_page(*addr + size);
 	}
 	return rv;
 }
